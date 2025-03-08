@@ -1,10 +1,18 @@
 {
-  "name": "test",
-  "version": "0.0.0",
+  "name": "nuxt-app",
   "private": true,
   "description": "家里的xfinity经常断线，这个程序每秒钟ping一次google，然后把数据写进数组中，每天把结果写入文件。",
   "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
   "dependencies": {
-    "express": "^4.21.2"
+    "nuxt": "^3.16.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   }
 }
