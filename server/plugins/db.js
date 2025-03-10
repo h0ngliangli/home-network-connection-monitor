@@ -28,12 +28,13 @@ export function addPing(timestamp, status) {
   upDownCount[status]++
   db.sql`insert into ping values(${timestamp}, ${status})`
     .then(() => {
-      console.log(`Ping added: ${timestamp} ${status}`)
+      console.log({timestamp, status})
     })
     .catch((err) => {
       console.error(`Error adding ping: ${timestamp} ${status}`, err)
     })
 }
+
 
 export function getUpDownCount() {
   return upDownCount

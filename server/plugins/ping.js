@@ -1,6 +1,9 @@
 import { exec } from "child_process"
 import { addPing } from "./db"
-const pingCli = "ping -c 1 -W 1 google.com"
+
+const pingCli = "ping -c 1 -W 3 google.com"
+
+// exec pingCli
 const ping = async () => {
   return new Promise((resolve, reject) => {
     exec(pingCli, (err, stdout, stderr) => {
@@ -11,6 +14,8 @@ const ping = async () => {
     })
   })
 }
+
+// call ping every second
 export default defineNitroPlugin((nitro) => {
   setInterval(async () => {
     ping()
