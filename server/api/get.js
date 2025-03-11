@@ -1,4 +1,4 @@
-import { getUpDownCount } from "../plugins/db"
+import { getStat } from "../plugins/db"
 export default defineEventHandler((event) => {
-  return getUpDownCount()
+  return getStat()
 })

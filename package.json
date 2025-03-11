@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "nuxt": "^3.16.0",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   }

@@ -1,7 +1,8 @@
 import { exec } from "child_process"
 import { addPing } from "./db"
 
-const pingCli = "ping -c 1 -W 3 google.com"
+const pingTimeout = 3
+const pingCli = `ping -c 1 -W ${pingTimeout} google.com`
 
 // exec pingCli
 const ping = async () => {
@@ -18,12 +19,21 @@ const ping = async () => {
 // call ping every second
 export default defineNitroPlugin((nitro) => {
   setInterval(async () => {
+    const now = new Date()
+    const epoch = now.getTime()
+    const timestamp = now.toLocaleString()
+    let status = ""
     ping()
       .then((stdout) => {
-        addPing(new Date(), "up")
+        status = "up"
       })
       .catch((err) => {
-        addPing(new Date(), "down")
+        status = "down"
+        console.error("Error pinging google.com", err)
+      })
+      .finally(() => {
+        addPing(epoch, timestamp, status)
+        console.log({ epoch, timestamp })
       })
   }, 1000)
 })
