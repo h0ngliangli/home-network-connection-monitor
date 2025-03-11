@@ -26,14 +26,14 @@ export default defineNitroPlugin((nitro) => {
     ping()
       .then((stdout) => {
         status = "up"
+        logger.info(`${timestamp} ⬆️`)
       })
       .catch((err) => {
         status = "down"
-        console.error("Error pinging google.com", err)
+        logger.error(`${timestamp} ❌`)
       })
       .finally(() => {
         addPing(epoch, timestamp, status)
-        console.log({ epoch, timestamp })
       })
   }, 1000)
 })

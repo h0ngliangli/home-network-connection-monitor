@@ -38,11 +38,8 @@ export function addPing(epoch, timestamp, status) {
     stat.lastDown = timestamp
   }
   db.sql`insert into ping values(${epoch}, ${timestamp}, ${status})`
-    .then(() => {
-      console.log({ timestamp, status })
-    })
     .catch((err) => {
-      console.error(`Error adding ping: ${epoch} ${timestamp} ${status}`, err)
+      logger.error(`Error adding ping: ${epoch} ${timestamp} ${status} ${err}`)
     })
 }
 
