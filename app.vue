@@ -25,7 +25,7 @@ const upRate = computed(() => {
   if (pingStats.value.up === 0 && pingStats.value.down === 0) {
     return 0
   }
-  return (pingStats.value.up / (pingStats.value.up + pingStats.value.down)) * 100
+  return ((pingStats.value.up / (pingStats.value.up + pingStats.value.down)) * 100).toFixed(2)
 })
 </script>
 
