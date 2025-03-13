@@ -25,14 +25,21 @@ const upRate = computed(() => {
   if (pingStats.value.up === 0 && pingStats.value.down === 0) {
     return 0
   }
-  return ((pingStats.value.up / (pingStats.value.up + pingStats.value.down)) * 100).toFixed(2)
+  return (
+    (pingStats.value.up / (pingStats.value.up + pingStats.value.down)) *
+    100
+  ).toFixed(2)
 })
+
+const hoursElapsed = computed(() =>
+  Math.floor((pingStats.value.up + pingStats.value.down) / 60 / 60 + 0.5)
+)
 </script>
 
 <template>
   <div class="center">
     <h1>Ping Stats</h1>
-    <p>Up: {{ pingStats.up }}</p>
+    <p>Up: {{ pingStats.up }} （~ {{ hoursElapsed }} hours）</p>
     <p>Down: {{ pingStats.down }}</p>
     <p>Last Down: {{ pingStats.lastDown }}</p>
     <p>Uptime: {{ upRate }}%</p>
