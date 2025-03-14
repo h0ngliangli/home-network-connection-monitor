@@ -1,4 +1,4 @@
-import { getStat } from "../plugins/db"
+// import { getStat } from "../plugins/init-db"
 export default defineEventHandler((event) => {
-  return getStat()
+  // return getStat()
 })
